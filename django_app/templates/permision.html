@@ -1,0 +1,16 @@
+{% extends 'blank.html' %}
+{% load static %}
+      {% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Permission Denied Error Text -->
+          <div class="text-center">
+            <div class="error mx-auto" data-text="ERROR" style="margin-right: 49%!important;">ERROR</div>
+            <p class="lead text-gray-800 mb-5">Permission Denied</p>
+            <p class="text-gray-500 mb-0">It looks like you have no rights...</p>
+            <a href={% url "index" %}>&larr; Back to Dashboard</a>
+          </div>
+
+        </div>
+      {% endblock content %}

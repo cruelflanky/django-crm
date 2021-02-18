@@ -1,0 +1,38 @@
+{% extends 'blank.html' %}
+{% load static %}
+	{% block content %}
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-4 col-lg-5">
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">{{user.username}}</h6>
+						</div>
+						<div class="card-body">
+							{% if user.profile.profile_pic %}
+								<img src={{ user.profile.profile_pic.url }} class="profile_img"/>
+							{% else %}
+								<img src={% static "image/profile_pic.png" %} class="profile_img"/>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-8 col-lg-7">
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+						</div>
+						<div class="card-body" id="edit_card1">
+							<form method="post" action="" enctype="multipart/form-data">
+								{% csrf_token %}
+								{{ form.as_p }}
+								<input type="submit" class="btn btn-primary btn-user btn-block" value="Save changes"/>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% include 'sms_status.html' %}
+		</div>
+	{% endblock content %}

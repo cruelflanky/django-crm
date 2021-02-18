@@ -1,0 +1,153 @@
+{% extends 'blank.html' %}
+{% load static %}
+	{% block content %}
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-4 col-lg-5">
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">{{user.username}}</h6>
+						</div>
+						<div class="card-body">
+							{% if user.profile.profile_pic %}
+								<img src={{ user.profile.profile_pic.url }} class="profile_img"/>
+							{% else %}
+								<img src={% static "image/profile_pic.png" %} class="profile_img"/>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-8 col-lg-7">
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+							<a href={% url "edit" %} class="btn btn-primary btn-icon-split btn-sm" id="edit_btn" style="
+								float: right;
+								margin-top: -25px;
+								right: 2%;
+								position: absolute;
+								padding-left: 7px;
+								padding-right: 7px;
+							">
+								<span class="text">Edit</span>
+							</a>
+						</div>
+						<div class="card-body" id="edit_card1">
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">First name</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{user.profile.first_name}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Last name</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{user.profile.last_name}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Email</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{user.profile.email}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Role</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{user.profile.role}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Team</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{user.profile.team}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Phone number</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{{user.profile.phone}}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Telegram</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{% if user.profile.telegram_active %}
+										Active
+									{% else %}
+										Not Active
+									{% endif %}
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Viber</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									{% if user.profile.viber_active %}
+										Active
+									{% else %}
+										Not Active
+									{% endif %}
+								</div>
+							</div>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% include 'sms_status.html' %}
+			<div class="row">
+				<div class="col-xl-12 col-lg-12">
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Payment Plan</h6>
+						</div>
+						<div class="card-body" id="edit_card1">
+							<h1 class="h4 mb-2 text-gray-800">Your payment plan: {{user.profile.payment_end}}</h1>
+							<p class="mb-4">Your last taken profile plan: {{user.profile.payment_plan}}</p>
+							<div class="row">
+								{% for payment_plan in payment_plans%}
+									<div class="col-xl-3 col-lg-3">
+										<div class="card shadow mb-4">
+											<div class="card-header py-3">
+												<h6 class="m-0 font-weight-bold text-primary">{{payment_plan.name}}</h6>
+											</div>
+											<div class="card-body">
+												<p>{{payment_plan.comment}}</p>
+												<a href={% url 'set_payment' payment_plan.id %}>
+													<input type="submit" class="btn btn-primary btn-user btn-block" value="Подключить"/>
+												</a>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock content %}

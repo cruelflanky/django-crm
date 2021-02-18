@@ -1,0 +1,60 @@
+{% extends 'blank.html' %}
+{% load static %}
+	{% block content %}
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Orders</h1>
+          <p class="mb-4">Here you can see all orders of your profile. There is smart table for more comfortable filtering your needs.</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Profile orders</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="dataTableDubli" class="display nowrap" style="width:100%">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Shop Url</th>
+							<th>Shop token</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th>Date created</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for order in orders%}
+						{% for shop in order%}
+						<tr>
+							<td>{{shop.customer_name}} {{shop.customer_lastname}}</td>
+							<td>{{shop.shop_name.url}}</td>
+							<td>{{shop.shop_name.shop_token}}</td>
+							<td>{{shop.customer_phone}}</td>
+							<td>{{shop.customer_email}}</td>
+							<td>{{shop.created}}</td>
+						</tr>
+						{% endfor %}
+					{% endfor %}
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>Name</th>
+							<th>Shop Url</th>
+							<th>Shop token</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th>Date created</th>
+						</tr>
+					</tfoot>
+				</table>
+				</div>
+			</div>
+		</div>
+
+        </div>
+        <!-- /.container-fluid -->
+	{% endblock content %}

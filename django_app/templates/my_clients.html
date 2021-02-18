@@ -1,0 +1,56 @@
+{% extends 'blank.html' %}
+{% load static %}
+	{% block content %}
+	    <!-- Begin Page Content -->
+	<div class="container-fluid">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Мои клиенты</h6>
+			</div>
+			<div class="card-body" style="text-align: center">
+				<div class="row">
+					<div class="col-xl-6 col-lg-6">
+						<a href={% url 'all_clients' %}>
+							<input type="submit" class="btn btn-primary btn-user btn-block" value="Все клиенты" style="margin-bottom : 5px;"/>
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<a href="#">
+							<input type="submit" class="btn btn-primary btn-user btn-block" value="Сегодня" style="margin-bottom : 5px;"/>
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<a href="#">
+							<input type="submit" class="btn btn-primary btn-user btn-block" value="Завтра" style="margin-bottom : 5px;"/>
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<a href="#">
+							<input type="submit" class="btn btn-primary btn-user btn-block" value="Календарь" style="margin-bottom : 5px;"/>
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<a href="#">
+							<input type="submit" class="btn btn-primary btn-user btn-block" value="Тест" style="margin-bottom : 5px;"/>
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<a href="#">
+							<input type="submit" class="btn btn-primary btn-user btn-block" value="Платники" style="margin-bottom : 5px;"/>
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<a href="#">
+							<input type="submit" class="btn btn-primary btn-user btn-block" value="Сигналы" style="margin-bottom : 5px;"/>
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-6">
+						<a href="#">
+							<input type="submit" class="btn btn-primary btn-user btn-block" value="Заявки" style="margin-bottom : 5px;"/>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock content %}

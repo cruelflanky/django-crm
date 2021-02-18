@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Sms Notifications</h6>
+			</div>
+			<div class="card-body" id="edit_card1">
+				<form method="post" action="">
+					{% csrf_token %}
+					{{ form2.as_p }}
+					<input type="submit" class="btn btn-primary btn-user btn-block" value="Save changes"/>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
